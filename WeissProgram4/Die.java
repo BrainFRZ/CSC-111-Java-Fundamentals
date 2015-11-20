@@ -14,7 +14,7 @@ import java.util.Random;
  * @author Terry
  */
 public class Die {
-    private static final Random generator = new Random();   //Psuedo-random integer Generator
+    private static final Random generator = new Random();   //Pseudo-random integer Generator
     private static final int DIE_SIDES = 6;                 //Number of sides on each Die
 
 

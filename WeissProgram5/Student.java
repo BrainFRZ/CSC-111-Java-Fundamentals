@@ -209,17 +209,18 @@ public class Student {
     //
     // Output:  Message if the course isn't on the schedule.
     //
-    // IF (the course number is less than the number of positions in the array) THEN
-    //     IF (credit check returns true) THEN
-    //         add course to schedule array at position indicated by course number
-    //         add the course credits to the total credits
-    //         increment the number of courses
-    //     ELSE
-    //         Display maximum credits exceeded message
-    //     END IF //credit check
+    // Algorithm:
+    // Initialize index to courseIndex(course name)
+    //
+    // IF (the course isn't on the schedule) THEN
+    //     Display course isn't on schedule
     // ELSE
-    //     Display maximum courses exceeded
-    // END IF //course number less than courses allowed
+    //     FOR i = index, number of courses - 1 //inherently skips if it's the last on the list
+    //         Shift next course backward to current slot
+    //     NEXT i
+    //
+    //     Decrement courseNumber
+    // END IF
     //-------------------------------------------------------
     public void dropCourse(String course) {
         int index = courseIndex(course);
@@ -228,11 +229,11 @@ public class Student {
             System.out.println(course + " isn't on the schedule.");
         } //end if course isn't on schedule
         else {
-            if (index != courseNumber - 1) {
-                for (int i = index; i < courseNumber; i++) {
-                    schedule[i] = schedule[i + 1];
-                } //end for each course left
-            } //end if course isn't the last one
+            // If it's already the last course on the list, it can be skipped since nothing needs
+            // to be shifted back.
+            for (int i = index; i < courseNumber - 1; i++) {
+                schedule[i] = schedule[i + 1];
+            } //end for each course left
 
             courseNumber--;
         } //end else course is on schedule
